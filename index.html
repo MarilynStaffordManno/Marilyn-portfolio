@@ -1264,7 +1264,7 @@
         <div>Built with precision</div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
         // Video hover play/pause
         document.querySelectorAll('.work-item').forEach(item => {
@@ -1272,23 +1272,26 @@
             const vimeoThumb = item.querySelector('.vimeo-thumb iframe');
             
             if (video) {
-                item.addEventListener('mouseenter', () => {
-                    video.play().catch(e => console.log('Video play failed:', e));
+                video.muted = true;
+                
+                item.addEventListener('mouseenter', function() {
+                    video.play().catch(function(e) {
+                        console.log('Video play failed:', e);
+                    });
                 });
-                item.addEventListener('mouseleave', () => {
+                
+                item.addEventListener('mouseleave', function() {
                     video.pause();
                     video.currentTime = 0;
                 });
-                // Preload video on page load
-                video.load();
             }
             
-            if (vimeoThumb) {
+            if (vimeoThumb && typeof Vimeo !== 'undefined') {
                 const player = new Vimeo.Player(vimeoThumb);
-                item.addEventListener('mouseenter', () => {
+                item.addEventListener('mouseenter', function() {
                     player.play();
                 });
-                item.addEventListener('mouseleave', () => {
+                item.addEventListener('mouseleave', function() {
                     player.pause();
                     player.setCurrentTime(0);
                 });
@@ -1350,3 +1353,14 @@
             document.body.appendChild(trail);
             
             setTimeout(() => {
+                trail.style.opacity = '0';
+                trail.style.transform = 'scale(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                trail.remove();
+            }, 600);
+        });
+    </script>
+</body>
+</html>
