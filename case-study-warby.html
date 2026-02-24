@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warby Parker — Marilyn Stafford</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f0f0f0;
+            --gray: #666;
+            --accent: #0070ba;
+            --accent-dim: #0070ba33;
+            --grid-color: rgba(255,255,255,0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.1) 2px,
+                rgba(0,0,0,0.1) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--black);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-mark::before {
+            content: '→';
+            font-size: 1.2rem;
+        }
+
+        .back-link {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--white);
+        }
+
+        .case-hero {
+            padding: 12rem 6rem 6rem 6rem;
+            max-width: 900px;
+        }
+
+        .case-meta {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .case-details {
+            padding: 0 6rem 4rem 6rem;
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .detail {
+            min-width: 150px;
+        }
+
+        .detail-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            font-size: 0.9rem;
+        }
+
+        .case-content {
+            padding: 4rem 6rem;
+            max-width: 900px;
+        }
+
+        .case-content h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .case-content p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .case-content ul {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .case-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .case-image {
+            margin: 4rem 6rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        img.case-image {
+            width: calc(100% - 12rem);
+            height: auto;
+            aspect-ratio: auto;
+            object-fit: cover;
+        }
+
+        video.case-image {
+            width: calc(100% - 12rem);
+            height: auto;
+            aspect-ratio: auto;
+            object-fit: cover;
+        }
+
+        .image-grid {
+            margin: 4rem 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .image-grid .case-image {
+            margin: 0;
+        }
+
+        .highlight-box {
+            margin: 4rem 6rem;
+            padding: 3rem;
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid var(--accent);
+        }
+
+        .highlight-box p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--white);
+            margin: 0;
+        }
+
+        .results-grid {
+            margin: 4rem 6rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .result {
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .result-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .next-project {
+            margin: 8rem 6rem 4rem 6rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .next-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .next-link {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .next-link:hover {
+            color: var(--accent);
+        }
+
+        .next-link span {
+            transition: transform 0.3s ease;
+        }
+
+        .next-link:hover span {
+            transform: translateX(10px);
+        }
+
+        footer {
+            padding: 3rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--gray);
+        }
+
+        @media (max-width: 1024px) {
+            nav, .case-hero, .case-details, .case-content, .case-image, .image-grid, .highlight-box, .results-grid, .next-project, footer {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+            .case-image, .image-grid, .highlight-box, .results-grid, .next-project {
+                margin-left: 3rem;
+                margin-right: 3rem;
+            }
+            img.case-image, video.case-image {
+                width: calc(100% - 6rem);
+            }
+            .results-grid, .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav, .case-hero, .case-details, .case-content, footer {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            .case-image, .image-grid, .highlight-box, .results-grid, .next-project {
+                margin-left: 2rem;
+                margin-right: 2rem;
+            }
+            img.case-image, video.case-image {
+                width: calc(100% - 4rem);
+            }
+            nav {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            .case-hero {
+                padding-top: 8rem;
+            }
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <nav>
+        <a href="portfolio.html" class="logo">
+            <div class="logo-mark"></div>
+            <span>MARILYN STAFFORD</span>
+        </a>
+        <a href="portfolio.html" class="back-link">← Back to Work</a>
+    </nav>
+
+    <section class="case-hero">
+        <div class="case-meta">Case Study</div>
+        <h1 class="case-title">Warby Parker</h1>
+        <p class="case-subtitle">Crafting clarity in the customer journey from browse to buy—helping people feel confident choosing glasses online.</p>
+    </section>
+
+    <section class="case-details">
+        <div class="detail">
+            <div class="detail-label">Role</div>
+            <div class="detail-value">Senior Content Designer</div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">Timeline</div>
+            <div class="detail-value">2021 – 2022</div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">Scope</div>
+            <div class="detail-value">Brand Voice, Product Content, E-commerce UX</div>
+        </div>
+    </section>
+
+    <img src="warby-hero.webp" alt="Warby Parker AI Advisor interface showing frame recommendations and face scan results" class="case-image">
+
+    <section class="case-content">
+        <h2>The Challenge</h2>
+        <p>Buying glasses online is weird. You're making a decision about something that sits on your face every day, and you can't try it on. Warby Parker pioneered home try-on to solve this, but the digital experience still needed to build confidence at every step.</p>
+        <p>The content challenge: reduce uncertainty without overwhelming people with information. Help them feel smart about a purchase they might be nervous about.</p>
+    </section>
+
+    <div class="highlight-box">
+        <p>"Every piece of copy needed to answer an unasked question—before the customer even knew they had it."</p>
+    </div>
+
+    <section class="case-content">
+        <h2>The Approach</h2>
+        <p>I partnered with product designers to map the emotional journey of buying glasses online. Where did people hesitate? What made them abandon carts? What questions did customer service answer most often?</p>
+        <p>We identified key moments of uncertainty and designed content interventions:</p>
+        <ul>
+            <li>Contextual help text that appeared exactly when needed</li>
+            <li>Conversational product descriptions that anticipated concerns</li>
+            <li>Reassuring microcopy around returns, fit, and prescription accuracy</li>
+            <li>A friendlier, less clinical tone for technical information</li>
+        </ul>
+    </section>
+
+    <div class="image-grid">
+        <div class="case-image">[Product Page Redesign]</div>
+        <div class="case-image">[Checkout Flow Copy]</div>
+    </div>
+
+    <section class="case-content">
+        <h2>Sample Work</h2>
+        <p>The prescription upload flow was a major friction point. People weren't sure if their prescription was valid, formatted correctly, or if they even needed one for the frames they wanted. We rewrote the entire flow to feel like a helpful conversation rather than a form.</p>
+    </section>
+
+    <video class="case-image" autoplay loop muted playsinline>
+        <source src="warby-video.mp4" type="video/mp4">
+    </video>
+
+    <section class="case-content">
+        <h2>The Outcome</h2>
+        <p>The updated content reduced support tickets related to prescription questions and improved completion rates on the checkout flow. More importantly, customer feedback shifted—people described the experience as "easy" and "reassuring."</p>
+    </section>
+
+    <div class="results-grid">
+        <div class="result">
+            <div class="result-number">23%</div>
+            <div class="result-label">Fewer prescription-related support tickets</div>
+        </div>
+        <div class="result">
+            <div class="result-number">18%</div>
+            <div class="result-label">Increase in checkout completion</div>
+        </div>
+        <div class="result">
+            <div class="result-number">4.8★</div>
+            <div class="result-label">Average experience rating</div>
+        </div>
+    </div>
+
+    <section class="case-content">
+        <h2>Reflection</h2>
+        <p>This project taught me that confidence is content's job. It's not just about being clear—it's about making people feel capable. The best UX writing doesn't just inform; it reassures.</p>
+    </section>
+
+    <div class="next-project">
+        <div class="next-label">Next Project</div>
+        <a href="case-study-apple.html" class="next-link">Apple <span>→</span></a>
+    </div>
+
+    <footer>
+        <div>© 2026 Marilyn Stafford</div>
+        <div>Content Designer & Creative Director</div>
+    </footer>
+</body>
+</html>

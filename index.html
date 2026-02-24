@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marilyn Stafford — Content Designer & Creative Director</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f0f0f0;
+            --gray: #666;
+            --accent: #00ff88;
+            --accent-dim: #00ff8833;
+            --red: #ff3366;
+            --blue: #0066ff;
+            --grid-color: rgba(255,255,255,0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        /* Scanline overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.1) 2px,
+                rgba(0,0,0,0.1) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Grid background */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-mark::before {
+            content: '→';
+            font-size: 1.2rem;
+            animation: signal 2s infinite;
+        }
+
+        .logo-mark::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            transform: translateY(-50%);
+            animation: scan 1.5s infinite;
+        }
+
+        @keyframes signal {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 6rem 8rem 6rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+
+        .hero-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-label::before {
+            content: '— ';
+        }
+
+        .hero-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title .line {
+            display: block;
+        }
+
+        .hero-title .line span {
+            display: inline-block;
+            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: var(--delay);
+            transform: translateY(100%);
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); }
+        }
+
+        .hero-title .accent {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .hero-title .accent::after {
+            content: '_';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .hero-description {
+            max-width: 440px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            animation: fadeIn 1s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            border: 1px solid var(--white);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease 1s forwards;
+            opacity: 0;
+        }
+
+        .hero-cta:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .hero-cta span {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover span {
+            transform: translateX(5px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 6rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+            writing-mode: vertical-rl;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--gray), transparent);
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 1; height: 60px; }
+            50% { opacity: 0.5; height: 40px; }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            position: absolute;
+            right: 6rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            text-align: right;
+        }
+
+        .stat {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .stat:nth-child(1) { animation-delay: 1.2s; }
+        .stat:nth-child(2) { animation-delay: 1.4s; }
+        .stat:nth-child(3) { animation-delay: 1.6s; }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        /* Logo Ticker */
+        .logo-ticker-wrapper {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+
+        .logo-ticker {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .logo-ticker-track {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            width: max-content;
+            animation: ticker 30s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-logo {
+            height: 35px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.7) invert(1);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .ticker-logo:hover {
+            opacity: 0.8;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 8rem 6rem;
+            max-width: 1400px;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1.5rem;
+        }
+
+        .section-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.6rem, 3vw, 2.5rem);
+            letter-spacing: -0.02em;
+        }
+
+        /* Work Grid */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .work-item {
+            position: relative;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .work-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .work-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--black) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .work-thumb {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .work-item:hover .work-thumb {
+            opacity: 1;
+        }
+
+        video.work-thumb {
+            object-fit: cover;
+        }
+
+        .vimeo-thumb {
+            overflow: hidden;
+        }
+
+        .work-item:hover::before {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .work-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15vw;
+            color: rgba(255,255,255,0.03);
+            letter-spacing: -0.05em;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .work-item:hover .work-bg {
+            transform: scale(1.1);
+            opacity: 0;
+        }
+
+        .work-content {
+            position: absolute;
+            inset: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 2;
+        }
+
+        .work-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .work-tag {
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--gray);
+        }
+
+        .work-info h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-info p {
+            font-size: 0.8rem;
+            color: var(--gray);
+            max-width: 400px;
+        }
+
+        .work-arrow {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .work-item:hover .work-arrow {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--black);
+        }
+
+        /* Featured Case Study */
+        .work-item.featured {
+            grid-column: span 2;
+            aspect-ratio: 21/9;
+        }
+
+        .work-item.featured .work-info h3 {
+            font-size: 2.5rem;
+        }
+
+        /* Brand Colors for Each Company */
+        .work-item[data-brand="apple"] { --brand: #a2aaad; }
+        .work-item[data-brand="tmobile"] { --brand: #e20074; }
+        .work-item[data-brand="warby"] { --brand: #0070ba; }
+        .work-item[data-brand="universal"] { --brand: #ffd700; }
+        .work-item[data-brand="discover"] { --brand: #ff6600; }
+        .work-item[data-brand="trevor"] { --brand: #f47920; }
+        .work-item[data-brand="peloton"] { --brand: #df1c2f; }
+
+        .work-item:hover {
+            border-color: var(--brand);
+        }
+
+        .work-item:hover .work-arrow {
+            background: var(--brand);
+            border-color: var(--brand);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .skill {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .about-visual {
+            position: relative;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: rotate 20s linear infinite;
+        }
+
+        .about-visual::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .about-logo-large {
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-logo-large::before {
+            content: '→';
+            animation: signal 2s infinite;
+        }
+
+        /* Capabilities */
+        .capabilities {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .capability {
+            padding: 3rem;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .capability:nth-child(3n) {
+            border-right: none;
+        }
+
+        .capability:nth-last-child(-n+3) {
+            border-bottom: none;
+        }
+
+        .capability:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .capability-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .capability h4 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .capability p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Tools Section */
+        .tools-section,
+        .about-tools {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tools-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .tool-logo {
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0) invert(1);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .tool-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%) brightness(1) invert(0);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 10rem 6rem;
+        }
+
+        .contact-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 5vw, 4rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .contact-title .highlight {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .contact-email {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+        }
+
+        .contact-email a {
+            color: var(--white);
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 0.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-email a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--gray);
+        }
+
+        .footer-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 0 3rem;
+            }
+            
+            section {
+                padding: 6rem 3rem;
+            }
+
+            nav {
+                padding: 2rem 3rem;
+            }
+
+            footer {
+                padding: 3rem;
+            }
+
+            .scroll-indicator {
+                left: 3rem;
+            }
+
+            .stats-bar {
+                right: 3rem;
+            }
+            
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .work-item.featured {
+                grid-column: span 1;
+                aspect-ratio: 16/10;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .capabilities {
+                grid-template-columns: 1fr;
+            }
+
+            .capability {
+                border-right: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 0 2rem;
+            }
+
+            section {
+                padding: 5rem 2rem;
+            }
+
+            .contact {
+                padding: 5rem 2rem;
+            }
+
+            .scroll-indicator {
+                left: 2rem;
+            }
+
+            .stats-bar {
+                display: none;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 3rem 2rem;
+            }
+        }
+
+        /* Glitch Effect for Hover */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch:hover {
+            animation: glitch 0.3s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        /* Noise texture overlay */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-mark"></div>
+            <span>MARILYN STAFFORD</span>
+        </a>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Content Designer & Creative Director</div>
+            <h1 class="hero-title">
+                <span class="line"><span style="--delay: 0.2s">WORDS IN</span></span>
+                <span class="line"><span style="--delay: 0.4s"><span class="accent">PROGRESS</span></span></span>
+            </h1>
+            <p class="hero-description">
+                Content designer and product writer shaping how people experience digital products. I help teams find the right words—the ones that make interfaces feel intuitive, human, and clear.
+            </p>
+            <a href="#work" class="hero-cta">
+                View Selected Work <span>→</span>
+            </a>
+        </div>
+        
+        <div class="scroll-indicator">Scroll</div>
+        
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Words Written</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Ticker -->
+    <div class="logo-ticker-wrapper">
+        <div class="logo-ticker">
+            <div class="logo-ticker-track">
+                <img src="logo-apple.png" alt="Apple" class="ticker-logo">
+                <img src="logo-tmobile.png" alt="T-Mobile" class="ticker-logo">
+                <img src="logo-warby.svg" alt="Warby Parker" class="ticker-logo">
+                <img src="logo-universal.png" alt="Universal" class="ticker-logo">
+                <img src="logo-trevor.png" alt="The Trevor Project" class="ticker-logo">
+                <img src="logo-peloton.jpg" alt="Peloton" class="ticker-logo">
+                <!-- Duplicate for seamless loop -->
+                <img src="logo-apple.png" alt="Apple" class="ticker-logo">
+                <img src="logo-tmobile.png" alt="T-Mobile" class="ticker-logo">
+                <img src="logo-warby.svg" alt="Warby Parker" class="ticker-logo">
+                <img src="logo-universal.png" alt="Universal" class="ticker-logo">
+                <img src="logo-trevor.png" alt="The Trevor Project" class="ticker-logo">
+                <img src="logo-peloton.jpg" alt="Peloton" class="ticker-logo">
+            </div>
+        </div>
+    </div>
+
+    <section id="work">
+        <div class="section-header">
+            <div>
+                <div class="section-number">01 — SELECTED WORK</div>
+                <h2 class="section-title">Case Studies</h2>
+            </div>
+        </div>
+        
+        <div class="work-grid">
+            <a href="case-study-tmobile.html" class="work-item featured" data-brand="tmobile">
+                <video class="work-thumb" muted loop playsinline preload="auto">
+                    <source src="tmobile-thumb.mp4" type="video/mp4">
+                </video>
+                <div class="work-bg">T-MOBILE</div>
+                <div class="work-content">
+                    <div class="work-tags">
+                        <span class="work-tag">Content Strategy</span>
+                        <span class="work-tag">UX Writing</span>
+                        <span class="work-tag">Design Systems</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>T-Mobile</h3>
+                        <p>Redefining the Un-carrier voice across digital touchpoints and product experiences.</p>
+                    </div>
+                </div>
+                <div class="work-arrow">→</div>
+            </a>
+            
+            <a href="case-study-warby.html" class="work-item" data-brand="warby">
+                <video class="work-thumb" muted loop playsinline preload="auto">
+                    <source src="warby-thumb.mp4" type="video/mp4">
+                </video>
+                <div class="work-bg">WARBY</div>
+                <div class="work-content">
+                    <div class="work-tags">
+                        <span class="work-tag">Brand Voice</span>
+                        <span class="work-tag">Product Content</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>Warby Parker</h3>
+                        <p>Crafting clarity in the customer journey from browse to buy.</p>
+                    </div>
+                </div>
+                <div class="work-arrow">→</div>
+            </a>
+            
+            <a href="case-study-apple.html" class="work-item" data-brand="apple">
+                <video class="work-thumb" muted loop playsinline preload="auto">
+                    <source src="apple-thumb.mp4" type="video/mp4">
+                </video>
+                <div class="work-bg">APPLE</div>
+                <div class="work-content">
+                    <div class="work-tags">
+                        <span class="work-tag">Product Content</span>
+                        <span class="work-tag">Siri</span>
+                        <span class="work-tag">Creator Platforms</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>Apple</h3>
+                        <p>Shaping how millions understand Siri and empowering creators across Apple Music and Podcasts.</p>
+                    </div>
+                </div>
+                <div class="work-arrow">→</div>
+            </a>
+            
+            <a href="case-study-universal.html" class="work-item" data-brand="universal">
+                <video class="work-thumb" muted loop playsinline preload="auto">
+                    <source src="universal-thumb.mp4" type="video/mp4">
+                </video>
+                <div class="work-bg">UNIVERSAL</div>
+                <div class="work-content">
+                    <div class="work-tags">
+                        <span class="work-tag">Content Design</span>
+                        <span class="work-tag">Experience Writing</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>Universal Studios</h3>
+                        <p>Building excitement through words that move people—literally.</p>
+                    </div>
+                </div>
+                <div class="work-arrow">→</div>
+            </a>
+            
+            <a href="case-study-discover.html" class="work-item" data-brand="discover">
+                <div class="work-thumb vimeo-thumb">
+                    <iframe src="https://player.vimeo.com/video/791165463?background=1&autoplay=0&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen" style="position:absolute;top:50%;left:50%;width:180%;height:180%;transform:translate(-50%,-50%);pointer-events:none;"></iframe>
+                </div>
+                <div class="work-bg">DISCOVER</div>
+                <div class="work-content">
+                    <div class="work-tags">
+                        <span class="work-tag">Financial UX</span>
+                        <span class="work-tag">Accessibility</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>Discover</h3>
+                        <p>Making financial products feel human and approachable.</p>
+                    </div>
+                </div>
+                <div class="work-arrow">→</div>
+            </a>
+            
+            <a href="case-study-trevor.html" class="work-item" data-brand="trevor">
+                <video class="work-thumb" muted loop playsinline preload="auto">
+                    <source src="trevor-thumb.mp4" type="video/mp4">
+                </video>
+                <div class="work-bg">TREVOR</div>
+                <div class="work-content">
+                    <div class="work-tags">
+                        <span class="work-tag">Crisis Content</span>
+                        <span class="work-tag">Inclusive Language</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>The Trevor Project</h3>
+                        <p>Words that save lives—designing compassionate crisis support content.</p>
+                    </div>
+                </div>
+                <div class="work-arrow">→</div>
+            </a>
+            
+            <a href="case-study-peloton.html" class="work-item" data-brand="peloton">
+                <video class="work-thumb" muted loop playsinline preload="auto">
+                    <source src="peloton-thumb.mp4" type="video/mp4">
+                </video>
+                <div class="work-bg">PELOTON</div>
+                <div class="work-content">
+                    <div class="work-tags">
+                        <span class="work-tag">Motivation Design</span>
+                        <span class="work-tag">Voice & Tone</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>Peloton</h3>
+                        <p>Energizing millions with content that pushes performance.</p>
+                    </div>
+                </div>
+                <div class="work-arrow">→</div>
+            </a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-header">
+            <div>
+                <div class="section-number">02 — ABOUT</div>
+                <h2 class="section-title">Hello</h2>
+            </div>
+        </div>
+        
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>I'm Marilyn—I help products speak human.</h3>
+                <p>
+                    I've spent the last decade figuring out what things should say. Buttons, error messages, onboarding flows, entire content systems—the small words that shape how people feel when they use a product.
+                </p>
+                <p>
+                    I've worked with startups finding their voice and enterprises untangling theirs. Lately, I've been curious about how AI is changing the way we write for (and with) machines.
+                </p>
+                <p>
+                    When I'm not writing, I'm probably editing. Or deleting. Mostly deleting.
+                </p>
+                
+                <div class="about-tools">
+                    <div class="tools-label">Tools I Use</div>
+                    <div class="tools-list">
+                        <img src="tool-figma.png" alt="Figma" class="tool-logo">
+                        <img src="tool-notion.png" alt="Notion" class="tool-logo">
+                        <img src="tool-miro.png" alt="Miro" class="tool-logo">
+                        <img src="tool-sketch.png" alt="Sketch" class="tool-logo">
+                        <img src="tool-claude.png" alt="Claude" class="tool-logo">
+                        <img src="tool-elevenlabs.png" alt="ElevenLabs" class="tool-logo">
+                        <img src="tool-gemini.png" alt="Gemini" class="tool-logo">
+                        <img src="tool-framer.png" alt="Framer" class="tool-logo">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-visual">
+                <div class="about-logo-large"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities">
+        <div class="section-header">
+            <div>
+                <div class="section-number">03 — CAPABILITIES</div>
+                <h2 class="section-title">What I Do</h2>
+            </div>
+        </div>
+        
+        <div class="capabilities">
+            <div class="capability">
+                <div class="capability-number">01</div>
+                <h4>Content Strategy</h4>
+                <p>Developing content frameworks, voice guidelines, and governance models that scale with your organization.</p>
+            </div>
+            <div class="capability">
+                <div class="capability-number">02</div>
+                <h4>UX Writing</h4>
+                <p>Crafting interface copy that guides users, reduces friction, and makes products feel effortless.</p>
+            </div>
+            <div class="capability">
+                <div class="capability-number">03</div>
+                <h4>Brand Voice</h4>
+                <p>Defining and documenting the personality, tone, and language that makes your brand unmistakable.</p>
+            </div>
+            <div class="capability">
+                <div class="capability-number">04</div>
+                <h4>AI Content Design</h4>
+                <p>Designing conversations, prompts, and content systems for AI-native products and experiences.</p>
+            </div>
+            <div class="capability">
+                <div class="capability-number">05</div>
+                <h4>Creative Direction</h4>
+                <p>Leading cross-functional teams to deliver cohesive narratives across every touchpoint.</p>
+            </div>
+            <div class="capability">
+                <div class="capability-number">06</div>
+                <h4>Design Systems</h4>
+                <p>Building content components and patterns that maintain consistency at scale.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-number">04 — CONTACT</div>
+        <h2 class="contact-title">Let's build <span class="highlight">something</span></h2>
+        <p class="contact-email">
+            <a href="/cdn-cgi/l/email-protection#39515c5555567954584b505540574a4d585f5f564b5d175a5654"><span class="__cf_email__" data-cfemail="b1d9d4dddddef1dcd0c3d8ddc8dfc2c5d0d7d7dec3d59fd2dedc">[email&#160;protected]</span></a>
+        </p>
+        <div class="social-links">
+            <a href="#" class="social-link">LinkedIn</a>
+            <a href="#" class="social-link">Twitter/X</a>
+            <a href="#" class="social-link">Read.cv</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-status">
+            <span class="status-dot"></span>
+            Available for projects
+        </div>
+        <div>© 2026 Marilyn Stafford — All Rights Reserved</div>
+        <div>Built with precision</div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // Video hover play/pause
+        document.querySelectorAll('.work-item').forEach(item => {
+            const video = item.querySelector('video.work-thumb');
+            const vimeoThumb = item.querySelector('.vimeo-thumb iframe');
+            
+            if (video) {
+                item.addEventListener('mouseenter', () => {
+                    video.play().catch(e => console.log('Video play failed:', e));
+                });
+                item.addEventListener('mouseleave', () => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+                // Preload video on page load
+                video.load();
+            }
+            
+            if (vimeoThumb) {
+                const player = new Vimeo.Player(vimeoThumb);
+                item.addEventListener('mouseenter', () => {
+                    player.play();
+                });
+                item.addEventListener('mouseleave', () => {
+                    player.pause();
+                    player.setCurrentTime(0);
+                });
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.work-item, .capability').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Cursor trail effect
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: var(--accent);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9997;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                opacity: 0.5;
+                transition: all 0.5s ease;
+            `;
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {

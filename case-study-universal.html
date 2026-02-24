@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Studios — Marilyn Stafford</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f0f0f0;
+            --gray: #666;
+            --accent: #ffd700;
+            --accent-dim: #ffd70033;
+            --grid-color: rgba(255,255,255,0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        ::selection { background: var(--accent); color: var(--black); }
+        a { color: inherit; text-decoration: none; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            padding: 2rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--black);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-mark {
+            width: 40px; height: 40px;
+            border: 2px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-mark::before { content: '→'; font-size: 1.2rem; }
+
+        .back-link {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover { color: var(--white); }
+
+        .case-hero {
+            padding: 12rem 6rem 6rem 6rem;
+            max-width: 900px;
+        }
+
+        .case-meta {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .case-details {
+            padding: 0 6rem 4rem 6rem;
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .detail { min-width: 150px; }
+
+        .detail-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value { font-size: 0.9rem; }
+
+        .case-content {
+            padding: 4rem 6rem;
+            max-width: 900px;
+        }
+
+        .case-content h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-content p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .case-content ul {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .case-content li { margin-bottom: 0.5rem; }
+
+        .case-image {
+            margin: 4rem 6rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        .image-grid {
+            margin: 4rem 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .image-grid .case-image { margin: 0; }
+
+        .highlight-box {
+            margin: 4rem 6rem;
+            padding: 3rem;
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid var(--accent);
+        }
+
+        .highlight-box p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--white);
+            margin: 0;
+        }
+
+        .results-grid {
+            margin: 4rem 6rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .result {
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .result-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label { font-size: 0.8rem; color: var(--gray); }
+
+        .next-project {
+            margin: 8rem 6rem 4rem 6rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .next-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .next-link {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .next-link:hover { color: var(--accent); }
+        .next-link span { transition: transform 0.3s ease; }
+        .next-link:hover span { transform: translateX(10px); }
+
+        footer {
+            padding: 3rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--gray);
+        }
+
+        @media (max-width: 1024px) {
+            nav, .case-hero, .case-details, .case-content, .case-image, .image-grid, .highlight-box, .results-grid, .next-project, footer { padding-left: 3rem; padding-right: 3rem; }
+            .case-image, .image-grid, .highlight-box, .results-grid, .next-project { margin-left: 3rem; margin-right: 3rem; }
+            .results-grid, .image-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav, .case-hero, .case-details, .case-content, footer { padding-left: 2rem; padding-right: 2rem; }
+            .case-image, .image-grid, .highlight-box, .results-grid, .next-project { margin-left: 2rem; margin-right: 2rem; }
+            nav { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+            .case-hero { padding-top: 8rem; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <nav>
+        <a href="portfolio.html" class="logo">
+            <div class="logo-mark"></div>
+            <span>MARILYN STAFFORD</span>
+        </a>
+        <a href="portfolio.html" class="back-link">← Back to Work</a>
+    </nav>
+
+    <section class="case-hero">
+        <div class="case-meta">Case Study</div>
+        <h1 class="case-title">Universal Studios</h1>
+        <p class="case-subtitle">Building excitement through words that move people—literally. Designing content for theme park experiences where every moment matters.</p>
+    </section>
+
+    <section class="case-details">
+        <div class="detail">
+            <div class="detail-label">Role</div>
+            <div class="detail-value">Content Designer</div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">Timeline</div>
+            <div class="detail-value">2020 – 2021</div>
+        </div>
+        <div class="detail">
+            <div class="detail-label">Scope</div>
+            <div class="detail-value">Content Design, Experience Writing, App UX</div>
+        </div>
+    </section>
+
+    <div class="case-image">[Project Hero Image]</div>
+
+    <section class="case-content">
+        <h2>The Challenge</h2>
+        <p>Theme parks are emotional experiences. People save up, plan trips, make memories. The Universal app needed to enhance that experience—not get in the way of it. But at the time, the app content felt functional and flat. It told you where things were, but it didn't make you excited to go there.</p>
+        <p>The challenge: make utility feel magical. Help people navigate while building anticipation.</p>
+    </section>
+
+    <div class="highlight-box">
+        <p>"Nobody goes to a theme park to use an app. But the right words at the right moment can make the whole day better."</p>
+    </div>
+
+    <section class="case-content">
+        <h2>The Approach</h2>
+        <p>I worked with the product and experience design teams to rethink how we talked to guests throughout their journey—from planning at home to standing in line to reflecting on the drive back.</p>
+        <p>Key interventions included:</p>
+        <ul>
+            <li>Rewriting ride descriptions to build anticipation, not just inform</li>
+            <li>Creating contextual notifications that felt helpful, not spammy</li>
+            <li>Designing wait time messaging that made queues feel shorter</li>
+            <li>Developing a voice that was excited but not exhausting</li>
+        </ul>
+    </section>
+
+    <div class="image-grid">
+        <div class="case-image">[Ride Description Redesign]</div>
+        <div class="case-image">[Notification Strategy]</div>
+    </div>
+
+    <section class="case-content">
+        <h2>Sample Work</h2>
+        <p>Wait times are a pain point at any theme park. We experimented with messaging that reframed the wait—giving people things to look for in the queue, teasing what was coming, and celebrating when they were almost there. Small shifts in language that changed how the time felt.</p>
+    </section>
+
+    <div class="case-image">[Queue Experience Messaging]</div>
+
+    <section class="case-content">
+        <h2>The Outcome</h2>
+        <p>The refreshed app content contributed to higher engagement and improved guest satisfaction scores. More importantly, qualitative feedback showed that guests felt the app enhanced their experience rather than interrupting it.</p>
+    </section>
+
+    <div class="results-grid">
+        <div class="result">
+            <div class="result-number">31%</div>
+            <div class="result-label">Increase in app engagement</div>
+        </div>
+        <div class="result">
+            <div class="result-number">4.6★</div>
+            <div class="result-label">App store rating</div>
+        </div>
+        <div class="result">
+            <div class="result-number">89%</div>
+            <div class="result-label">Guests found notifications helpful</div>
+        </div>
+    </div>
+
+    <section class="case-content">
+        <h2>Reflection</h2>
+        <p>Working on this project reminded me that content design isn't just about clarity—it's about feeling. The same information delivered with different energy creates a completely different experience. Sometimes your job is to get out of the way. Sometimes it's to add a little magic.</p>
+    </section>
+
+    <div class="next-project">
+        <div class="next-label">Next Project</div>
+        <a href="case-study-discover.html" class="next-link">Discover <span>→</span></a>
+    </div>
+
+    <footer>
+        <div>© 2026 Marilyn Stafford</div>
+        <div>Content Designer & Creative Director</div>
+    </footer>
+</body>
+</html>
