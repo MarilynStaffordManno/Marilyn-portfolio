@@ -148,8 +148,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 4rem 6rem;
-            background: linear-gradient(transparent, var(--black));
+            padding: 6rem 6rem 4rem 6rem;
+            background: linear-gradient(transparent, var(--black) 70%);
         }
 
         .hero-video-overlay h1 {
@@ -164,6 +164,7 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
 
         .hero-video-overlay .tag {
@@ -173,6 +174,74 @@
             padding: 0.5rem 1rem;
             border: 1px solid rgba(255,255,255,0.3);
             color: var(--gray);
+        }
+
+        .hero-details {
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .hero-detail-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .hero-detail-value {
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
+        .role-slider {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .role-slider-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .role-slider-track {
+            width: 100px;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .role-slider-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .role-slider-dot {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2px solid var(--black);
         }
 
         /* Intro Section */
@@ -220,11 +289,11 @@
 
         .side-by-side-content h2 {
             font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
             letter-spacing: -0.02em;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
         .side-by-side-content p {
@@ -249,8 +318,8 @@
         .big-quote p {
             font-family: 'Syne', sans-serif;
             font-weight: 700;
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1.4;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.5;
             letter-spacing: -0.02em;
         }
 
@@ -420,6 +489,28 @@
                 <span class="tag">UX Writing</span>
                 <span class="tag">Design Systems</span>
             </div>
+            <div class="hero-details">
+                <div class="hero-detail">
+                    <div class="hero-detail-label">Role</div>
+                    <div class="hero-detail-value">Content Designer</div>
+                    <div class="role-slider">
+                        <span class="role-slider-label">Manager</span>
+                        <div class="role-slider-track">
+                            <div class="role-slider-fill" style="width: 75%;"></div>
+                            <div class="role-slider-dot" style="left: 75%;"></div>
+                        </div>
+                        <span class="role-slider-label">Hands-On</span>
+                    </div>
+                </div>
+                <div class="hero-detail">
+                    <div class="hero-detail-label">Timeline</div>
+                    <div class="hero-detail-value">2022 – 2023</div>
+                </div>
+                <div class="hero-detail">
+                    <div class="hero-detail-label">Scope</div>
+                    <div class="hero-detail-value">Content Strategy, UX Writing, Design Systems</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -444,11 +535,6 @@
                 <source src="tmobile-component.mp4" type="video/mp4">
             </video>
         </div>
-    </section>
-
-    <!-- Big Quote -->
-    <section class="big-quote">
-        <p>How do you keep a brand voice feeling human when you have hundreds of people writing for it?</p>
     </section>
 
     <!-- Side by Side: Upgrade Flow (Reversed) -->
