@@ -109,7 +109,6 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
         }
 
         .logo-mark::before {
@@ -118,199 +117,190 @@
         }
 
         .back-link {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             color: var(--gray);
             transition: color 0.3s ease;
         }
 
         .back-link:hover {
-            color: var(--white);
-        }
-
-        /* Hero */
-        .case-hero {
-            padding: 12rem 6rem 6rem 6rem;
-            max-width: 900px;
-        }
-
-        .case-meta {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 1.5rem;
         }
 
-        .case-title {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
+        /* Hero Section - Full Bleed Video */
+        .hero-video {
+            width: 100%;
+            height: 100vh;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .case-subtitle {
-            font-size: 1.1rem;
-            color: var(--gray);
-            line-height: 1.6;
-            max-width: 600px;
-        }
-
-        /* Case Details */
-        .case-details {
-            padding: 0 6rem 4rem 6rem;
-            display: flex;
-            gap: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .detail {
-            min-width: 150px;
-        }
-
-        .detail-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gray);
-            margin-bottom: 0.5rem;
-        }
-
-        .detail-value {
-            font-size: 0.9rem;
-        }
-
-        /* Content Sections */
-        .case-content {
-            padding: 4rem 6rem;
-            max-width: 900px;
-        }
-
-        .case-content h2 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-
-        .case-content p {
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .case-content ul {
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            margin-left: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .case-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Image Placeholders */
-        .case-image {
-            margin: 4rem 6rem;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.1);
-            aspect-ratio: 16/9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-        }
-
-        img.case-image {
-            max-width: 900px;
-            width: auto;
-            height: auto;
-            aspect-ratio: auto;
-            object-fit: contain;
-            display: block;
-            margin: 4rem auto;
-        }
-
-        .case-image.tall {
-            aspect-ratio: 4/3;
-        }
-
-        .image-grid {
-            margin: 4rem 6rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .image-grid .case-image {
-            margin: 0;
-        }
-
-        .image-grid video.case-image {
+        .hero-video video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            margin: 0;
         }
 
-        /* Highlight Box */
-        .highlight-box {
-            margin: 4rem 6rem;
-            padding: 3rem;
-            background: rgba(255,255,255,0.02);
-            border-left: 3px solid var(--accent);
+        .hero-video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 4rem 6rem;
+            background: linear-gradient(transparent, var(--black));
         }
 
-        .highlight-box p {
-            font-size: 1.2rem;
-            line-height: 1.6;
+        .hero-video-overlay h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .hero-video-overlay .tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-video-overlay .tag {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--gray);
+        }
+
+        /* Intro Section */
+        .intro {
+            padding: 8rem 6rem;
+            max-width: 900px;
+        }
+
+        .intro p {
+            font-size: 1.4rem;
+            line-height: 1.8;
             color: var(--white);
-            margin: 0;
         }
 
-        /* Results */
-        .results-grid {
-            margin: 4rem 6rem;
+        /* Full Bleed Image/Video */
+        .full-bleed {
+            width: 100%;
+            padding: 0 6rem;
+            margin: 4rem 0;
+        }
+
+        .full-bleed img,
+        .full-bleed video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Side by Side Section */
+        .side-by-side {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 6rem;
+            align-items: center;
+        }
+
+        .side-by-side.reverse {
+            direction: rtl;
+        }
+
+        .side-by-side.reverse > * {
+            direction: ltr;
+        }
+
+        .side-by-side-content h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .side-by-side-content p {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--gray);
+        }
+
+        .side-by-side-media img,
+        .side-by-side-media video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Big Quote */
+        .big-quote {
+            padding: 8rem 6rem;
+            max-width: 1000px;
+        }
+
+        .big-quote p {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
+        .big-quote p::before {
+            content: '"';
+            color: var(--accent);
+        }
+
+        .big-quote p::after {
+            content: '"';
+            color: var(--accent);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
+            padding: 6rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin: 4rem 0;
         }
 
-        .result {
-            padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.1);
+        .stat {
+            text-align: center;
         }
 
-        .result-number {
+        .stat-number {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
+            font-size: 4rem;
             color: var(--accent);
             line-height: 1;
             margin-bottom: 0.5rem;
         }
 
-        .result-label {
-            font-size: 0.8rem;
+        .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
             color: var(--gray);
         }
 
         /* Next Project */
         .next-project {
-            margin: 8rem 6rem 4rem 6rem;
-            padding-top: 4rem;
+            padding: 8rem 6rem;
             border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .next-label {
@@ -318,14 +308,13 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--gray);
-            margin-bottom: 1rem;
         }
 
         .next-link {
             font-family: 'Syne', sans-serif;
             font-weight: 700;
             font-size: 2rem;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 1rem;
             transition: color 0.3s ease;
@@ -333,14 +322,6 @@
 
         .next-link:hover {
             color: var(--accent);
-        }
-
-        .next-link span {
-            transition: transform 0.3s ease;
-        }
-
-        .next-link:hover span {
-            transform: translateX(10px);
         }
 
         /* Footer */
@@ -357,46 +338,42 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            nav, .case-hero, .case-details, .case-content, .case-image, .image-grid, .highlight-box, .results-grid, .next-project, footer {
-                padding-left: 3rem;
-                padding-right: 3rem;
-            }
-
-            .case-image, .image-grid, .highlight-box, .results-grid, .next-project {
-                margin-left: 3rem;
-                margin-right: 3rem;
-            }
-
-            .results-grid {
+            .side-by-side {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
-            .image-grid {
-                grid-template-columns: 1fr;
+            .side-by-side.reverse {
+                direction: ltr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            nav, .case-hero, .case-details, .case-content, footer {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .hero-video-overlay {
+                padding: 3rem 2rem;
+            }
+
+            .intro,
+            .full-bleed,
+            .side-by-side,
+            .big-quote,
+            .stats-grid,
+            .next-project,
+            footer {
                 padding-left: 2rem;
                 padding-right: 2rem;
             }
 
-            .case-image, .image-grid, .highlight-box, .results-grid, .next-project {
-                margin-left: 2rem;
-                margin-right: 2rem;
-            }
-
-            nav {
-                padding-top: 1.5rem;
-                padding-bottom: 1.5rem;
-            }
-
-            .case-hero {
-                padding-top: 8rem;
-            }
-
-            .case-details {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
                 gap: 2rem;
             }
 
@@ -431,90 +408,81 @@
         <a href="https://www.marilynstafford.com" class="back-link">← Back to Work</a>
     </nav>
 
-    <section class="case-hero">
-        <div class="case-meta">Case Study</div>
-        <h1 class="case-title">T-Mobile</h1>
-        <p class="case-subtitle">Redefining the Un-carrier voice across digital touchpoints and product experiences—making wireless feel less like a utility and more like a relationship.</p>
-    </section>
-
-    <section class="case-details">
-        <div class="detail">
-            <div class="detail-label">Role</div>
-            <div class="detail-value">Content Designer</div>
-        </div>
-        <div class="detail">
-            <div class="detail-label">Timeline</div>
-            <div class="detail-value">2022 – 2023</div>
-        </div>
-        <div class="detail">
-            <div class="detail-label">Scope</div>
-            <div class="detail-value">Content Strategy, UX Writing, Design Systems</div>
-        </div>
-    </section>
-
-    <img src="tmobile-hero.png" alt="T-Mobile app interface showing home, shop, and manage screens" class="case-image">
-
-    <section class="case-content">
-        <h2>The Challenge</h2>
-        <p>T-Mobile had successfully positioned itself as the "Un-carrier"—the scrappy challenger brand that broke industry norms. But as the company grew through mergers and expanded its product offerings, the voice became fragmented. Different teams wrote differently. The personality that made T-Mobile distinctive was getting lost in the noise of a scaling organization.</p>
-        <p>The ask: create a content system that could maintain personality at scale, while giving writers clear guidance without stifling creativity.</p>
-    </section>
-
-    <div class="highlight-box">
-        <p>"How do you keep a brand voice feeling human when you have hundreds of people writing for it?"</p>
-    </div>
-
-    <section class="case-content">
-        <h2>The Approach</h2>
-        <p>I worked with the UX writing team to audit existing content across the digital experience—from app onboarding flows to error messages to account management. We mapped where the voice felt strong and where it drifted into generic corporate-speak.</p>
-        <p>From there, I helped develop:</p>
-        <ul>
-            <li>A refreshed voice framework with clear principles and real examples</li>
-            <li>A component-level content library with modular copy patterns</li>
-            <li>Tone guidelines that helped writers flex the voice for different contexts</li>
-            <li>Writing workshops to onboard new team members and align existing ones</li>
-        </ul>
-    </section>
-
-    <div class="image-grid">
-        <div class="case-image">[Voice Framework Documentation]</div>
-        <video class="case-image" autoplay loop muted playsinline>
+    <!-- Hero Video - Full Bleed -->
+    <div class="hero-video">
+        <video autoplay loop muted playsinline>
             <source src="tmobile-component.mp4" type="video/mp4">
         </video>
-    </div>
-
-    <section class="case-content">
-        <h2>Make a complex upgrade take 5 minutes.</h2>
-        <p>Upgrades take time, and our team wanted to change that. To achieve this, the language we developed was radically simple and clear. In one long scroll that included everything from picking phone colors to adding insurance—copy was trimmed to a series of succinct actions that made everything quick and easy.</p>
-    </section>
-
-    <img src="tmobile-upgrade.png" alt="T-Mobile upgrade flow screens showing device customization, delivery options, and trade-in" class="case-image">
-
-    <section class="case-content">
-        <h2>The Outcome</h2>
-        <p>The new content system was adopted across multiple product teams and became the foundation for how T-Mobile writes digitally. Writers had clear guidance but enough flexibility to make smart decisions in context.</p>
-    </section>
-
-    <div class="results-grid">
-        <div class="result">
-            <div class="result-number">40%</div>
-            <div class="result-label">Reduction in content review cycles</div>
-        </div>
-        <div class="result">
-            <div class="result-number">200+</div>
-            <div class="result-label">Components in content library</div>
-        </div>
-        <div class="result">
-            <div class="result-number">12</div>
-            <div class="result-label">Teams onboarded to new system</div>
+        <div class="hero-video-overlay">
+            <h1>T-Mobile</h1>
+            <div class="tags">
+                <span class="tag">Content Strategy</span>
+                <span class="tag">UX Writing</span>
+                <span class="tag">Design Systems</span>
+            </div>
         </div>
     </div>
 
-    <section class="case-content">
-        <h2>Reflection</h2>
-        <p>This project reinforced something I believe deeply: voice guidelines only work if they're usable. The prettiest documentation in the world doesn't matter if people can't quickly find what they need. We invested heavily in making the system searchable, scannable, and integrated into the tools writers actually used.</p>
+    <!-- Intro -->
+    <section class="intro">
+        <p>Redefining the Un-carrier voice across digital touchpoints and product experiences—making wireless feel less like a utility and more like a relationship.</p>
     </section>
 
+    <!-- Full Bleed Hero Image -->
+    <div class="full-bleed">
+        <img src="tmobile-hero.png" alt="T-Mobile app interface showing home, shop, and manage screens">
+    </div>
+
+    <!-- Side by Side: Challenge -->
+    <section class="side-by-side">
+        <div class="side-by-side-content">
+            <h2>Keeping a brand voice human at scale.</h2>
+            <p>T-Mobile had successfully positioned itself as the "Un-carrier"—the scrappy challenger brand that broke industry norms. But as the company grew through mergers and expanded its product offerings, the voice became fragmented. Different teams wrote differently. The personality that made T-Mobile distinctive was getting lost in the noise.</p>
+        </div>
+        <div class="side-by-side-media">
+            <video autoplay loop muted playsinline>
+                <source src="tmobile-component.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-- Big Quote -->
+    <section class="big-quote">
+        <p>How do you keep a brand voice feeling human when you have hundreds of people writing for it?</p>
+    </section>
+
+    <!-- Side by Side: Upgrade Flow (Reversed) -->
+    <section class="side-by-side reverse">
+        <div class="side-by-side-content">
+            <h2>Make a complex upgrade take 5 minutes.</h2>
+            <p>Upgrades take time, and our team wanted to change that. To achieve this, the language we developed was radically simple and clear. In one long scroll that included everything from picking phone colors to adding insurance—copy was trimmed to a series of succinct actions that made everything quick and easy.</p>
+        </div>
+        <div class="side-by-side-media">
+            <img src="tmobile-upgrade.png" alt="T-Mobile upgrade flow screens">
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat">
+            <div class="stat-number">40%</div>
+            <div class="stat-label">Reduction in content review cycles</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Components in content library</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">12</div>
+            <div class="stat-label">Teams onboarded to new system</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">5 min</div>
+            <div class="stat-label">Average upgrade completion</div>
+        </div>
+    </div>
+
+    <!-- Next Project -->
     <div class="next-project">
         <div class="next-label">Next Project</div>
         <a href="case-study-warby.html" class="next-link">Warby Parker <span>→</span></a>
