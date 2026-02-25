@@ -12,88 +12,296 @@
             --black: #0a0a0a;
             --white: #f0f0f0;
             --gray: #999;
-            --accent: #a2aaad;
+            --accent: #555555;
+            --accent-dim: #55555533;
             --grid-color: rgba(255,255,255,0.03);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Space Mono', monospace; background: var(--black); color: var(--white); overflow-x: hidden; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
 
         body::before {
-            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
-            pointer-events: none; z-index: 9999;
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.1) 2px,
+                rgba(0,0,0,0.1) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
         }
 
         body::after {
-            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px; pointer-events: none; z-index: -1;
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        ::selection { background: var(--accent); color: var(--black); }
-        a { color: inherit; text-decoration: none; }
+        ::selection {
+            background: var(--accent);
+            color: var(--white);
+        }
 
-        nav { position: fixed; top: 0; left: 0; width: 100%; padding: 2rem 6rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: var(--black); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.1em; display: flex; align-items: center; gap: 0.5rem; }
-        .logo-mark { width: 40px; height: 40px; border: 2px solid var(--white); display: flex; align-items: center; justify-content: center; }
-        .logo-mark::before { content: '→'; font-size: 1.2rem; }
-        .back-link { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); transition: color 0.3s ease; }
-        .back-link:hover { color: var(--white); }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-        .case-hero { padding: 12rem 6rem 6rem 6rem; max-width: 900px; }
-        .case-meta { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
-        .case-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
-        .case-subtitle { font-size: 1.1rem; color: var(--gray); line-height: 1.6; max-width: 600px; }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--black);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
 
-        .case-details { padding: 0 6rem 4rem 6rem; display: flex; gap: 4rem; flex-wrap: wrap; }
-        .detail { min-width: 150px; }
-        .detail-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 0.5rem; }
-        .detail-value { font-size: 0.9rem; }
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-        .case-content { padding: 4rem 6rem; max-width: 900px; }
-        .case-content h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.5rem; margin-bottom: 1.5rem; }
-        .case-content p { color: var(--gray); line-height: 1.8; margin-bottom: 1.5rem; font-size: 0.95rem; }
-        .case-content ul { color: var(--gray); line-height: 1.8; margin-bottom: 1.5rem; margin-left: 1.5rem; font-size: 0.95rem; }
-        .case-content li { margin-bottom: 0.5rem; }
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-        .case-image { margin: 4rem 6rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 0.8rem; letter-spacing: 0.1em; }
-        .image-grid { margin: 4rem 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .image-grid .case-image { margin: 0; }
+        .logo-mark::before {
+            content: '→';
+            font-size: 1.2rem;
+        }
 
-        .highlight-box { margin: 4rem 6rem; padding: 3rem; background: rgba(255,255,255,0.02); border-left: 3px solid var(--accent); }
-        .highlight-box p { font-size: 1.2rem; line-height: 1.6; color: var(--white); margin: 0; }
+        .back-link {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
 
-        .results-grid { margin: 4rem 6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .result { padding: 2rem; border: 1px solid rgba(255,255,255,0.1); }
-        .result-number { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
-        .result-label { font-size: 0.8rem; color: var(--gray); }
+        .back-link:hover {
+            color: var(--accent);
+        }
 
-        .next-project { margin: 8rem 6rem 4rem 6rem; padding-top: 4rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .next-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 1rem; }
-        .next-link { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 2rem; display: inline-flex; align-items: center; gap: 1rem; transition: color 0.3s ease; }
-        .next-link:hover { color: var(--accent); }
-        .next-link span { transition: transform 0.3s ease; }
-        .next-link:hover span { transform: translateX(10px); }
+        .case-hero {
+            padding: 12rem 6rem 4rem 6rem;
+            max-width: 1200px;
+        }
 
-        footer { padding: 3rem 6rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gray); }
+        .case-hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
 
-        @media (max-width: 1024px) {
-            nav, .case-hero, .case-details, .case-content, .case-image, .image-grid, .highlight-box, .results-grid, .next-project, footer { padding-left: 3rem; padding-right: 3rem; }
-            .case-image, .image-grid, .highlight-box, .results-grid, .next-project { margin-left: 3rem; margin-right: 3rem; }
-            .results-grid, .image-grid { grid-template-columns: 1fr; }
+        .hero-details {
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .hero-detail-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .hero-detail-value {
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
+        .role-slider {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .role-slider-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .role-slider-track {
+            width: 100px;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .role-slider-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: var(--white);
+            border-radius: 2px;
+        }
+
+        .role-slider-dot {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--white);
+            border-radius: 50%;
+            border: 2px solid var(--black);
+        }
+
+        .intro {
+            padding: 4rem 6rem 8rem 6rem;
+            max-width: 900px;
+        }
+
+        .intro p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: var(--white);
+        }
+
+        .case-content {
+            padding: 4rem 6rem;
+            max-width: 900px;
+        }
+
+        .case-content h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-content p {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .next-project {
+            padding: 8rem 6rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .next-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .next-link {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .next-link:hover {
+            color: var(--accent);
+        }
+
+        footer {
+            padding: 3rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--gray);
         }
 
         @media (max-width: 768px) {
-            nav, .case-hero, .case-details, .case-content, footer { padding-left: 2rem; padding-right: 2rem; }
-            .case-image, .image-grid, .highlight-box, .results-grid, .next-project { margin-left: 2rem; margin-right: 2rem; }
-            nav { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-            .case-hero { padding-top: 8rem; }
-            footer { flex-direction: column; gap: 1rem; text-align: center; }
+            nav, .case-hero, .intro, .case-content, .next-project, footer {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
         }
 
-        .noise { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
     </style>
 </head>
 <body>
@@ -108,100 +316,39 @@
     </nav>
 
     <section class="case-hero">
-        <div class="case-meta">Case Study</div>
-        <h1 class="case-title">Apple</h1>
-        <p class="case-subtitle">Shaping how millions understand Siri and empowering creators across Apple Music and Podcasts—writing for products where simplicity is everything.</p>
+        <h1>Apple</h1>
+        <div class="hero-details">
+            <div class="hero-detail">
+                <div class="hero-detail-label">Role</div>
+                <div class="hero-detail-value">Senior Content Designer</div>
+                <div class="role-slider">
+                    <span class="role-slider-label">Manager</span>
+                    <div class="role-slider-track">
+                        <div class="role-slider-fill" style="width: 60%;"></div>
+                        <div class="role-slider-dot" style="left: 60%;"></div>
+                    </div>
+                    <span class="role-slider-label">Hands-On</span>
+                </div>
+            </div>
+            <div class="hero-detail">
+                <div class="hero-detail-label">Timeline</div>
+                <div class="hero-detail-value">2021 – 2022</div>
+            </div>
+            <div class="hero-detail">
+                <div class="hero-detail-label">Scope</div>
+                <div class="hero-detail-value">Content Strategy, UX Writing</div>
+            </div>
+        </div>
     </section>
 
-    <section class="case-details">
-        <div class="detail">
-            <div class="detail-label">Role</div>
-            <div class="detail-value">Content Designer</div>
-        </div>
-        <div class="detail">
-            <div class="detail-label">Timeline</div>
-            <div class="detail-value">2018 – 2019</div>
-        </div>
-        <div class="detail">
-            <div class="detail-label">Scope</div>
-            <div class="detail-value">Product Content, Marketing, Creator Platforms</div>
-        </div>
+    <section class="intro">
+        <p>This case study contains confidential work. Please contact me directly to discuss this project in detail.</p>
     </section>
-
-    <div class="case-image">[Project Hero Image]</div>
 
     <section class="case-content">
-        <h2>The Challenge</h2>
-        <p>Apple sets the bar for simplicity. Every word has to earn its place. I worked across two distinct but related challenges: helping people understand what Siri can do (without overwhelming them), and building platforms that empower musicians and podcasters to succeed on Apple's ecosystem.</p>
-        <p>The through-line: how do you communicate capability without complexity? How do you make powerful tools feel approachable?</p>
-    </section>
-
-    <div class="highlight-box">
-        <p>"At Apple, you learn that the best content is the content you don't notice. It just works."</p>
-    </div>
-
-    <section class="case-content">
-        <h2>Siri</h2>
-        <p>The Siri product page needed to do something tricky: showcase an ever-expanding set of capabilities without making the experience feel overwhelming or the technology feel cold. People needed to understand what Siri could do for them—not just what Siri could do in general.</p>
-        <p>I worked on:</p>
-        <ul>
-            <li>Restructuring the page around use cases rather than features</li>
-            <li>Writing example commands that felt natural, not scripted</li>
-            <li>Balancing personality with utility—Siri is helpful, not gimmicky</li>
-            <li>Making capabilities scannable while maintaining Apple's editorial tone</li>
-        </ul>
-    </section>
-
-    <div class="case-image">[Siri Page Design]</div>
-
-    <section class="case-content">
-        <h2>Creator Platforms</h2>
-        <p>Apple Music for Artists and Apple Podcasts for Creators serve very different audiences—musicians and podcasters—but share a common need: helping creators understand their performance and grow their audience on Apple's platforms.</p>
-        <p>These tools are data-rich, which creates a content challenge: how do you make analytics feel empowering rather than intimidating? How do you explain complex metrics without dumbing them down?</p>
-    </section>
-
-    <div class="image-grid">
-        <div class="case-image">[Apple Music for Artists]</div>
-        <div class="case-image">[Apple Podcasts for Creators]</div>
-    </div>
-
-    <section class="case-content">
-        <h2>The Approach</h2>
-        <p>For the creator platforms, I focused on progressive disclosure—giving people the information they need at each level of engagement, from quick glances to deep dives. Key interventions included:</p>
-        <ul>
-            <li>Writing contextual explanations that appeared when and where needed</li>
-            <li>Developing a consistent vocabulary for metrics across both platforms</li>
-            <li>Creating onboarding flows that oriented creators without overwhelming them</li>
-            <li>Designing empty states that encouraged action rather than highlighting absence</li>
-        </ul>
-    </section>
-
-    <div class="case-image">[Onboarding Flow]</div>
-
-    <section class="case-content">
-        <h2>The Outcome</h2>
-        <p>The Siri page successfully communicated expanded capabilities while maintaining Apple's signature clarity. The creator platforms saw improved onboarding completion and engagement with analytics features.</p>
-    </section>
-
-    <div class="results-grid">
-        <div class="result">
-            <div class="result-number">3</div>
-            <div class="result-label">Major product launches supported</div>
-        </div>
-        <div class="result">
-            <div class="result-number">2</div>
-            <div class="result-label">Creator platforms redesigned</div>
-        </div>
-        <div class="result">
-            <div class="result-number">1B+</div>
-            <div class="result-label">Potential users reached</div>
-        </div>
-    </div>
-
-    <section class="case-content">
-        <h2>Reflection</h2>
-        <p>Working at Apple taught me discipline. When you can't hide behind jargon or extra words, you have to really understand what you're trying to say. Every sentence gets scrutinized. Every word choice matters. It's challenging in the best way—it makes you a sharper writer.</p>
-        <p>It also taught me that simplicity isn't the same as dumbing down. The goal is clarity that respects the reader's intelligence while removing unnecessary friction. That's a balance I carry into every project now.</p>
+        <h2>The Work</h2>
+        <p>Contributed to content strategy and UX writing for key Apple services and experiences. Collaborated with cross-functional teams to craft clear, human-centered language at scale.</p>
+        <p>More details available upon request.</p>
     </section>
 
     <div class="next-project">
@@ -246,7 +393,7 @@
             text-align: center;
         ">
         <button onclick="checkPassword()" style="
-            background: var(--accent);
+            background: var(--white);
             border: none;
             padding: 1rem 2rem;
             font-family: 'Space Mono', monospace;
