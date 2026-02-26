@@ -891,6 +891,10 @@
                 aspect-ratio: 16/10;
             }
 
+            .work-tags {
+                display: none;
+            }
+
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 4rem;
@@ -953,7 +957,12 @@
                 font-size: clamp(2rem, 10vw, 3rem);
             }
 
-            /* Work items - show thumbs on mobile */
+            /* Work items - mobile fixes */
+            .work-item {
+                aspect-ratio: 4/5;
+                padding: 1.5rem;
+            }
+
             .work-thumb {
                 opacity: 1;
             }
@@ -962,8 +971,26 @@
                 display: none;
             }
 
-            .work-item-info h3 {
-                font-size: 1.2rem;
+            .work-tags {
+                display: none;
+            }
+
+            .work-info h3 {
+                font-size: 1.4rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .work-info p {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+
+            .work-arrow {
+                width: 40px;
+                height: 40px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                font-size: 1rem;
             }
 
             .contact {
