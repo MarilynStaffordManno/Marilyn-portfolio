@@ -903,6 +903,19 @@
             .capability {
                 border-right: none !important;
             }
+
+            .logo-ticker-track {
+                gap: 3rem;
+            }
+
+            .ticker-logo {
+                width: 80px;
+                height: 32px;
+            }
+
+            .ticker-logo.logo-wide {
+                width: 100px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -914,28 +927,85 @@
                 display: none;
             }
 
+            .logo span {
+                font-size: 1.1rem;
+            }
+
             .hero {
                 padding: 0 2rem;
+                min-height: 80vh;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                line-height: 1.7;
             }
 
             section {
-                padding: 5rem 2rem;
+                padding: 4rem 2rem;
+            }
+
+            .section-title {
+                font-size: clamp(2rem, 10vw, 3rem);
             }
 
             .contact {
-                padding: 5rem 2rem;
+                padding: 4rem 2rem;
+            }
+
+            .contact-title {
+                font-size: clamp(2rem, 10vw, 3rem);
             }
 
             .scroll-indicator {
-                left: 2rem;
+                display: none;
             }
 
             .stats-bar {
                 display: none;
             }
 
+            .about-grid {
+                gap: 3rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .about-photo {
+                max-width: 280px;
+            }
+
+            .about-visual::before,
+            .about-visual::after {
+                width: 100%;
+                height: 100%;
+            }
+
+            .tools-list {
+                gap: 1rem;
+            }
+
+            .tool-logo {
+                height: 24px;
+            }
+
+            .capability {
+                padding: 2rem 0;
+            }
+
             .social-links {
                 flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .social-link {
+                font-size: 0.85rem;
             }
 
             footer {
@@ -943,6 +1013,72 @@
                 gap: 1rem;
                 text-align: center;
                 padding: 3rem 2rem;
+            }
+
+            .logo-ticker-wrapper {
+                padding: 2rem 0;
+            }
+
+            .logo-ticker-track {
+                gap: 2rem;
+            }
+
+            .ticker-logo {
+                width: 60px;
+                height: 24px;
+            }
+
+            .ticker-logo.logo-wide {
+                width: 80px;
+            }
+
+            .work-item-info h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo-mark {
+                width: 24px;
+                height: 24px;
+            }
+
+            .logo span {
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 0 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .about-photo {
+                max-width: 240px;
+            }
+
+            .contact {
+                padding: 3rem 1.5rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
             }
         }
 
