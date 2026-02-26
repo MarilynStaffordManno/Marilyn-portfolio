@@ -619,28 +619,37 @@
 
         .about-visual {
             position: relative;
-            aspect-ratio: 1;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        .about-photo {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 4px;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+
+        .about-photo:hover {
+            filter: grayscale(0%);
+        }
+
+        .about-text .location {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
         .about-visual::before {
-            content: '';
-            position: absolute;
-            width: 80%;
-            height: 80%;
-            border: 1px solid rgba(255,255,255,0.1);
-            animation: rotate 20s linear infinite;
+            display: none;
         }
 
         .about-visual::after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 60%;
-            border: 1px solid rgba(255,255,255,0.05);
-            animation: rotate 15s linear infinite reverse;
+            display: none;
         }
 
         @keyframes rotate {
@@ -1197,15 +1206,13 @@
         
         <div class="about-grid">
             <div class="about-text">
-                <h3>I'm Marilyn-I help products speak human.</h3>
+                <h3>Marilyn (Manno) Stafford</h3>
+                <p class="location">Based in NYC and Miami</p>
                 <p>
-                    I've spent the last decade figuring out what things should say. Buttons, error messages, onboarding flows, entire content systems-the small words that shape how people feel when they use a product.
+                    Hello there, I'm Marilyn. I've spent the last couple decades being a word-nerd for brands. First in social voice, then in digital campaign work, and now in product design.
                 </p>
                 <p>
-                    I've worked with startups finding their voice and enterprises untangling theirs. Lately, I've been curious about how AI is changing the way we write for (and with) machines.
-                </p>
-                <p>
-                    When I'm not writing, I'm probably editing. Or deleting. Mostly deleting.
+                    For the past 8 years I've been honing my craft and leading content and creative teams for brands like Apple, T-Mobile, and Nike. I recently founded the content design discipline at Kettle. And spent the last year developing new ways of working with AI that streamline and catch headlines.
                 </p>
                 
                 <div class="about-tools">
@@ -1224,7 +1231,7 @@
             </div>
             
             <div class="about-visual">
-                <div class="about-logo-large"></div>
+                <img src="marilyn-photo.jpg" alt="Marilyn Stafford" class="about-photo">
             </div>
         </div>
     </section>
