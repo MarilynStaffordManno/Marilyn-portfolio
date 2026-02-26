@@ -291,6 +291,29 @@
             display: block;
         }
 
+        .side-by-side-media .vimeo-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .side-by-side-media .vimeo-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .side-by-side-media.large {
+            min-height: 400px;
+        }
+
+        .side-by-side-media.large .vimeo-embed {
+            padding-bottom: 75%;
+        }
+
         /* Stats Grid */
         .stats-grid {
             display: grid;
@@ -553,17 +576,27 @@
         <img src="discover-college.png" alt="Discover My College Plan calculator screens">
     </div>
 
-    <!-- Side by Side: Approach (Reversed) -->
-    <section class="side-by-side reverse">
+    <!-- College Covered Section -->
+    <section class="content-block">
+        <h2>An approachable digital HQ for smarter college planning.</h2>
+        <p>Through usability testing, SEO audits, user feedback, and data-driven design, we transformed Discover's student loan websites into accessible information hubs. The new sites provide clear content, intuitive navigation, and helpful resources tailored to the needs of students and their folks.</p>
+    </section>
+
+    <div class="full-bleed">
+        <img src="discover-web.webp" alt="College Covered website redesign">
+    </div>
+
+    <!-- Side by Side: Trust -->
+    <section class="side-by-side">
+        <div class="side-by-side-media large">
+            <div class="vimeo-embed">
+                <iframe src="https://player.vimeo.com/video/791165463?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
         <div class="side-by-side-content">
             <h2>Trust is built in small moments.</h2>
             <p>I partnered with product, legal, and compliance teams to find the line between clear and accurate. The goal wasn't to hide complexity - it was to present it in a way that felt manageable.</p>
             <p>We rewrote account opening flows in plain language. Created a glossary system that explained terms in context. Developed accessible content patterns for screen readers. Designed error messages that actually helped people fix problems.</p>
-        </div>
-        <div class="side-by-side-media">
-            <div class="vimeo-embed">
-                <iframe src="https://player.vimeo.com/video/791165463?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
         </div>
     </section>
 
