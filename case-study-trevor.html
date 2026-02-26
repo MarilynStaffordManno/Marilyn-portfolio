@@ -325,13 +325,6 @@
             }
         }
 
-
-        @media (max-width: 1024px) {
-            .side-by-side {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
             .side-by-side.reverse {
                 direction: ltr;
             }
@@ -348,11 +341,6 @@
                 gap: 2rem;
             }
         }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 1.5rem 2rem;
-            }
 
             .logo span {
                 font-size: 1.1rem;
@@ -430,11 +418,6 @@
             }
         }
 
-        @media (max-width: 480px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
             .logo-mark {
                 width: 24px;
                 height: 24px;
@@ -501,6 +484,182 @@
                 font-size: 0.75rem;
             }
         }
+
+
+        @media (max-width: 1024px) {
+            .side-by-side {
+                grid-template-columns: 1fr !important;
+                gap: 2rem;
+            }
+
+            .side-by-side.reverse {
+                direction: ltr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-video-overlay {
+                padding: 10rem 3rem 2rem 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .logo span {
+                font-size: 1.1rem;
+            }
+
+            .hero-video {
+                height: 70vh;
+            }
+
+            .hero-video-overlay {
+                padding: 6rem 2rem 2rem 2rem;
+            }
+
+            .hero-video-overlay h1 {
+                font-size: clamp(2rem, 10vw, 3.5rem);
+            }
+
+            .hero-details {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .intro {
+                padding: 3rem 2rem;
+            }
+
+            .intro p {
+                font-size: 1.1rem;
+            }
+
+            .side-by-side {
+                padding: 2rem;
+                gap: 2rem;
+            }
+
+            .side-by-side-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .side-by-side-content p {
+                font-size: 0.9rem;
+            }
+
+            .side-by-side-media video,
+            .side-by-side-media img {
+                max-width: 100%;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+                padding: 2rem;
+            }
+
+            .stat-number {
+                font-size: clamp(1.5rem, 8vw, 2rem);
+            }
+
+            .stat-label {
+                font-size: 0.6rem;
+            }
+
+            .next-project {
+                padding: 3rem 2rem;
+            }
+
+            .next-link {
+                font-size: clamp(1.5rem, 8vw, 2rem);
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo-mark {
+                width: 24px;
+                height: 24px;
+            }
+
+            .logo span {
+                font-size: 0.9rem;
+            }
+
+            .back-link {
+                font-size: 0.65rem;
+            }
+
+            .hero-video {
+                height: 60vh;
+                margin-top: 60px;
+            }
+
+            .hero-video-overlay {
+                padding: 3rem 1.5rem 1.5rem 1.5rem;
+            }
+
+            .hero-video-overlay h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-details {
+                gap: 1rem;
+            }
+
+            .hero-detail-label {
+                font-size: 0.55rem;
+            }
+
+            .hero-detail-value {
+                font-size: 0.75rem;
+            }
+
+            .role-slider {
+                display: none;
+            }
+
+            .intro {
+                padding: 1.5rem;
+            }
+
+            .intro p {
+                font-size: 1rem;
+            }
+
+            .side-by-side {
+                padding: 1.5rem;
+            }
+
+            .stats-grid {
+                padding: 1.5rem;
+            }
+
+            .next-project {
+                padding: 2rem 1.5rem;
+            }
+
+            footer {
+                padding: 1.5rem;
+                font-size: 0.7rem;
+            }
+        }
+
 
         .noise {
             position: fixed;
