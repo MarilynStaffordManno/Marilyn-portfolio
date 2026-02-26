@@ -629,12 +629,9 @@
             max-width: 400px;
             height: auto;
             border-radius: 4px;
-            filter: grayscale(20%);
-            transition: filter 0.3s ease;
-        }
-
-        .about-photo:hover {
-            filter: grayscale(0%);
+            filter: grayscale(100%);
+            position: relative;
+            z-index: 2;
         }
 
         .about-text .location {
@@ -645,11 +642,23 @@
         }
 
         .about-visual::before {
-            display: none;
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: rotate 20s linear infinite;
+            z-index: 1;
         }
 
         .about-visual::after {
-            display: none;
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: rotate 15s linear infinite reverse;
+            z-index: 1;
         }
 
         @keyframes rotate {
@@ -1206,10 +1215,10 @@
         
         <div class="about-grid">
             <div class="about-text">
-                <h3>Marilyn (Manno) Stafford</h3>
+                <h3>Hello there, I'm Marilyn.</h3>
                 <p class="location">Based in NYC and Miami</p>
                 <p>
-                    Hello there, I'm Marilyn. I've spent the last couple decades being a word-nerd for brands. First in social voice, then in digital campaign work, and now in product design.
+                    I've spent the last couple decades being a word-nerd for brands. First in social voice, then in digital campaign work, and now in product design.
                 </p>
                 <p>
                     For the past 8 years I've been honing my craft and leading content and creative teams for brands like Apple, T-Mobile, and Nike. I recently founded the content design discipline at Kettle. And spent the last year developing new ways of working with AI that streamline and catch headlines.
