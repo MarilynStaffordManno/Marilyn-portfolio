@@ -347,25 +347,21 @@
             padding: 4rem 0;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            overflow: hidden;
             width: 100%;
             position: relative;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
         }
 
         .logo-ticker {
             width: 100%;
-            position: relative;
+            overflow: hidden;
         }
 
         .logo-ticker-track {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 4rem;
-            width: fit-content;
+            gap: 5rem;
             animation: ticker 80s linear infinite;
-            will-change: transform;
+            white-space: nowrap;
         }
 
         @keyframes ticker {
@@ -374,22 +370,16 @@
         }
 
         .ticker-logo {
-            height: 32px;
-            width: auto;
+            width: 100px;
+            height: 40px;
             object-fit: contain;
-            filter: brightness(0) invert(1);
-            opacity: 0.6;
+            opacity: 0.5;
             transition: opacity 0.3s ease;
             flex-shrink: 0;
-            display: block;
-        }
-        
-        .ticker-logo.logo-icon {
-            height: 38px;
         }
 
         .ticker-logo:hover {
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
         /* Section Styling */
@@ -1013,13 +1003,13 @@
     <div class="logo-ticker-wrapper">
         <div class="logo-ticker">
             <div class="logo-ticker-track">
-                <img src="logo-apple.svg" alt="Apple" class="ticker-logo logo-icon">
-                <img src="logo-tmobile.svg" alt="T-Mobile" class="ticker-logo logo-icon">
+                <img src="logo-apple.svg" alt="Apple" class="ticker-logo">
+                <img src="logo-tmobile.svg" alt="T-Mobile" class="ticker-logo">
                 <img src="logo-warby.svg" alt="Warby Parker" class="ticker-logo">
-                <img src="logo-universal.svg" alt="Universal Studios" class="ticker-logo logo-icon">
-                <img src="logo-peloton.svg" alt="Peloton" class="ticker-logo logo-icon">
+                <img src="logo-universal.svg" alt="Universal Studios" class="ticker-logo">
+                <img src="logo-peloton.svg" alt="Peloton" class="ticker-logo">
                 <img src="logo-discover.svg" alt="Discover" class="ticker-logo">
-                <img src="logo-amex.svg" alt="American Express" class="ticker-logo logo-icon">
+                <img src="logo-amex.svg" alt="American Express" class="ticker-logo">
                 <img src="logo-nike.svg" alt="Nike" class="ticker-logo">
                 <img src="logo-mailchimp.svg" alt="Mailchimp" class="ticker-logo">
                 <img src="logo-masterclass.svg" alt="MasterClass" class="ticker-logo">
@@ -1030,13 +1020,13 @@
                 <img src="logo-elf.svg" alt="e.l.f. Cosmetics" class="ticker-logo">
                 <img src="logo-intel.svg" alt="Intel" class="ticker-logo">
                 <!-- Duplicate for seamless loop -->
-                <img src="logo-apple.svg" alt="Apple" class="ticker-logo logo-icon">
-                <img src="logo-tmobile.svg" alt="T-Mobile" class="ticker-logo logo-icon">
+                <img src="logo-apple.svg" alt="Apple" class="ticker-logo">
+                <img src="logo-tmobile.svg" alt="T-Mobile" class="ticker-logo">
                 <img src="logo-warby.svg" alt="Warby Parker" class="ticker-logo">
-                <img src="logo-universal.svg" alt="Universal Studios" class="ticker-logo logo-icon">
-                <img src="logo-peloton.svg" alt="Peloton" class="ticker-logo logo-icon">
+                <img src="logo-universal.svg" alt="Universal Studios" class="ticker-logo">
+                <img src="logo-peloton.svg" alt="Peloton" class="ticker-logo">
                 <img src="logo-discover.svg" alt="Discover" class="ticker-logo">
-                <img src="logo-amex.svg" alt="American Express" class="ticker-logo logo-icon">
+                <img src="logo-amex.svg" alt="American Express" class="ticker-logo">
                 <img src="logo-nike.svg" alt="Nike" class="ticker-logo">
                 <img src="logo-mailchimp.svg" alt="Mailchimp" class="ticker-logo">
                 <img src="logo-masterclass.svg" alt="MasterClass" class="ticker-logo">
