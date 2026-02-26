@@ -213,6 +213,27 @@
             color: var(--gray);
         }
 
+        /* Content Block */
+        .content-block {
+            padding: 4rem 6rem 2rem 6rem;
+            max-width: 900px;
+        }
+
+        .content-block h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .content-block p {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--gray);
+        }
+
         /* Side by Side */
         .side-by-side {
             display: grid;
@@ -505,17 +526,15 @@
         <p>Making financial products feel human and approachable - translating complex banking into language that builds trust and reduces anxiety.</p>
     </section>
 
-    <!-- Side by Side: My College Plan -->
-    <section class="side-by-side">
-        <div class="side-by-side-content">
-            <h2>Help future college students make a plan.</h2>
-            <p>For the 'My College Plan' calculator - a highly-sophisticated, custom-built tool that allows students to compare college costs, check out potential earnings of college majors, and calculate their college ROI.</p>
-            <p>We spent time getting into the mind of our users, found the right tone to engage them, and then worked closely with the UX/UI team to create something simple, fun, useful, and brand-forward.</p>
-        </div>
-        <div class="side-by-side-media">
-            <img src="discover-college.png" alt="Discover My College Plan calculator screens">
-        </div>
+    <!-- My College Plan Section -->
+    <section class="content-block">
+        <h2>Help future college students make a plan.</h2>
+        <p>For the 'My College Plan' calculator - a highly-sophisticated, custom-built tool that allows students to compare college costs, check out potential earnings of college majors, and calculate their college ROI. We spent time getting into the mind of our users, found the right tone to engage them, and then worked closely with the UX/UI team to create something simple, fun, useful, and brand-forward.</p>
     </section>
+
+    <div class="full-bleed">
+        <img src="discover-college.png" alt="Discover My College Plan calculator screens">
+    </div>
 
     <!-- Side by Side: Approach (Reversed) -->
     <section class="side-by-side reverse">
