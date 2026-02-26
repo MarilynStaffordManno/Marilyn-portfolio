@@ -886,13 +886,25 @@
                 grid-template-columns: 1fr;
             }
             
+            .work-item {
+                aspect-ratio: 16/9;
+            }
+            
             .work-item.featured {
                 grid-column: span 1;
-                aspect-ratio: 16/10;
+                aspect-ratio: 16/9;
             }
 
             .work-tags {
                 display: none;
+            }
+
+            .work-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .work-info p {
+                font-size: 0.85rem;
             }
 
             .about-grid {
@@ -959,7 +971,7 @@
 
             /* Work items - mobile fixes */
             .work-item {
-                aspect-ratio: 4/5;
+                aspect-ratio: 16/9;
                 padding: 1.5rem;
             }
 
@@ -976,7 +988,7 @@
             }
 
             .work-info h3 {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
                 margin-bottom: 0.5rem;
             }
 
