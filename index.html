@@ -493,7 +493,7 @@
             padding: 2rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-end;
             z-index: 2;
         }
 
@@ -501,6 +501,7 @@
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
 
         .work-tag {
@@ -884,6 +885,7 @@
             
             .work-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             
             .work-item {
@@ -895,16 +897,29 @@
                 aspect-ratio: 16/9;
             }
 
+            .work-content {
+                padding: 1.5rem;
+            }
+
             .work-tags {
                 display: none;
             }
 
             .work-info h3 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
 
             .work-info p {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
+                max-width: 100%;
+                padding-right: 60px;
+            }
+
+            .work-arrow {
+                width: 40px;
+                height: 40px;
+                bottom: 1.5rem;
+                right: 1.5rem;
             }
 
             .about-grid {
