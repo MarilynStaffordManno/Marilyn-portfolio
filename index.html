@@ -348,11 +348,13 @@
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
             overflow: hidden;
+            width: 100%;
         }
 
         .logo-ticker {
             width: 100%;
-            overflow: hidden;
+            overflow: visible;
+            position: relative;
         }
 
         .logo-ticker-track {
@@ -369,16 +371,18 @@
         }
 
         .ticker-logo {
-            height: 35px;
+            height: 30px;
             width: auto;
+            max-width: 120px;
             object-fit: contain;
-            filter: grayscale(100%) brightness(0.7) invert(1);
-            opacity: 0.5;
+            filter: brightness(0) invert(1);
+            opacity: 0.6;
             transition: opacity 0.3s ease;
+            flex-shrink: 0;
         }
 
         .ticker-logo:hover {
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         /* Section Styling */
