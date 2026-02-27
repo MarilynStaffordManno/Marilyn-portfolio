@@ -201,6 +201,45 @@
             color: var(--gray);
         }
 
+        /* Content Block */
+        .content-block {
+            padding: 4rem 6rem 2rem 6rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content-block h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .content-block p {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        /* Full Bleed */
+        .full-bleed {
+            width: 100%;
+            padding: 0 6rem;
+            margin: 2rem auto;
+            max-width: 1400px;
+        }
+
+        .full-bleed img,
+        .full-bleed video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Side by Side */
         .side-by-side {
             display: grid;
@@ -506,6 +545,17 @@
             </video>
         </div>
     </section>
+
+    <!-- Creators Section -->
+    <section class="content-block">
+        <h2>Unifying content for Creators.</h2>
+        <p>The sites dedicated to Apple Music artists, and Apple Podcasters had the same problem, all of their content was scattered across multiple domains. Their look, feel, and tone needed unifying.</p>
+        <p>We created a flexible design system with easy back-end integration to allow the team to quickly update content to support their editorial needs. In addition, we developed a robust resource library for both platforms, wrote in-depth long-form articles about musicians and podcasters, as well as wrote and designed monthly email newsletters featuring custom content series.</p>
+    </section>
+
+    <div class="full-bleed">
+        <img src="apple-creators.png" alt="Apple Music for Artists and Apple Podcasts for Creators">
+    </div>
 
     <!-- Stats -->
     <div class="stats-grid">
