@@ -201,6 +201,44 @@
             color: var(--gray);
         }
 
+        /* Content Block */
+        .content-block {
+            padding: 4rem 6rem 2rem 6rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content-block h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .content-block p {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--gray);
+        }
+
+        /* Full Bleed */
+        .full-bleed {
+            width: 100%;
+            padding: 0 6rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .full-bleed img,
+        .full-bleed video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Side by Side */
         .side-by-side {
             display: grid;
@@ -494,18 +532,15 @@
     </section>
 
     <!-- Side by Side: Challenge -->
-    <section class="side-by-side">
-        <div class="side-by-side-content">
-            <h2>When someone reaches out in crisis, words can mean everything.</h2>
-            <p>The Trevor Project provides crisis intervention and suicide prevention services to LGBTQ+ young people. The digital experience needed to feel safe, welcoming, and immediate - while guiding people to the help they need.</p>
-            <p>The challenge: design content that feels warm and human in a context that's clinical by necessity. Remove barriers without removing safeguards.</p>
-        </div>
-        <div class="side-by-side-media">
-            <video autoplay loop muted playsinline>
-                <source src="trevor-thumb.mp4" type="video/mp4">
-            </video>
-        </div>
+    <!-- Digital Lifeline Section -->
+    <section class="content-block">
+        <h2>Crafting a digital lifeline for LGBTQ+ young people.</h2>
+        <p>The new website had a lot of really important goals. Its primary purpose was to give easy access to life-saving services where parents, prospective volunteers, donors, or professionals can discover the resources they need to support them. Our team was able to simplify a complex architecture to make the site clear for all audiences, with reach a counselor or donate to the cause easiest to find.</p>
     </section>
+
+    <div class="full-bleed">
+        <img src="trevor-website.png" alt="The Trevor Project website redesign">
+    </div>
 
     <!-- Side by Side: Approach (Reversed) -->
     <section class="side-by-side reverse">
